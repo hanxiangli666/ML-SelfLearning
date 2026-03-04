@@ -55,6 +55,8 @@ desktop.ini
 
 # 大型数据文件
 *.csv.gz
+*.tar.gz
+*.zip
 *.parquet
 *.h5
 *.hdf5

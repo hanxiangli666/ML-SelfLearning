@@ -2,6 +2,8 @@
 
 import { spawn } from "child_process";
 import { strict as assert } from "assert";
+import path from "path";
+import { fileURLToPath } from "url";
 
 class MCPTester {
   constructor() {
@@ -353,7 +355,11 @@ class MCPTester {
 }
 
 // Run tests if this file is executed directly
-if (import.meta.url === `file://${process.argv[1]}`) {
+const isDirectRun =
+  process.argv[1] &&
+  path.resolve(process.argv[1]) === path.resolve(fileURLToPath(import.meta.url));
+
+if (isDirectRun) {
   const tester = new MCPTester();
   tester.runAllTests().catch(console.error);
 }

@@ -1,7 +1,0 @@
-{
-  "ollama": {
-    "baseUrl": "http://localhost:11434",
-    "defaultModel": "llama2",
-    "timeout": 30000
-  }
-}

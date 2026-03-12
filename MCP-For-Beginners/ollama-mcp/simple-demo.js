@@ -33,6 +33,11 @@ async function runTest(testCase) {
 
   return new Promise((resolve) => {
     let step = 0;
+    const timeoutId = setTimeout(() => {
+      console.log('Test timed out');
+      serverProcess.kill();
+      resolve();
+    }, 20000);
 
     serverProcess.stdout.on('data', (data) => {
       const response = data.toString().trim();
@@ -69,6 +74,7 @@ async function runTest(testCase) {
         }
         
         setTimeout(() => {
+          clearTimeout(timeoutId);
           serverProcess.kill();
           resolve();
         }, 100);
@@ -89,12 +95,6 @@ async function runTest(testCase) {
 
     serverProcess.stdin.write(JSON.stringify(initRequest) + '\n');
 
-    // Safety timeout
-    setTimeout(() => {
-      console.log('Test timed out');
-      serverProcess.kill();
-      resolve();
-    }, 20000);
   });
 }
 

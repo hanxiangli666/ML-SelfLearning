@@ -5,7 +5,7 @@ import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js'
 import fetch from 'node-fetch';
 
 const OLLAMA_BASE_URL = 'http://localhost:11434';
-const DEFAULT_MODEL = 'llama3.2:3b';
+const DEFAULT_MODEL = 'llama3.1:latest';
 
 async function sendToOllama(prompt, model = DEFAULT_MODEL) {
   try {
@@ -14,8 +14,23 @@ async function sendToOllama(prompt, model = DEFAULT_MODEL) {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ model, prompt, stream: false })
     });
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      return `Error: Ollama HTTP ${response.status} - ${errorText}`;
+    }
+
     const result = await response.json();
-    return result.response;
+
+    if (typeof result.response === 'string' && result.response.trim()) {
+      return result.response;
+    }
+
+    if (result.error) {
+      return `Error: ${result.error}`;
+    }
+
+    return `Error: Unexpected Ollama response: ${JSON.stringify(result)}`;
   } catch (error) {
     return `Error: ${error.message}`;
   }

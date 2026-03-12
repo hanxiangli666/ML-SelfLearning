@@ -24,7 +24,7 @@ Warning: if you run with a lower version of Node, `fetch` won't be present. Tool
 
 Run from your project's root directory:
 
-```sh
+```powershell
 npm install
 ```
 
@@ -56,22 +56,22 @@ The Postman Desktop Application is the easiest way to run and test MCP servers. 
 
 **Step 2**: Read out the documentation article [here](https://learning.postman.com/docs/postman-ai-agent-builder/mcp-requests/create/) and see how to create an MCP request inside the Postman app.
 
-**Step 3**: Set the type of the MCP request to `STDIO` and set the command to `node </absolute/path/to/mcpServer.js>`. If you have issues with using only `node` (e.g. an old version is used), supply an absolute path instead to a node version 18+. You can get the full path to node by running:
+**Step 3**: Set the type of the MCP request to `STDIO` and set the command to `node <absolute\\path\\to\\mcpServer.js>`. If you have issues with using only `node` (e.g. an old version is used), supply an absolute path instead to a node version 18+. You can get the full path to node by running:
 
-```sh
-which node
+```powershell
+(Get-Command node).Source
 ```
 
-To check the node version, run:re
+To check the node version, run:
 
-```sh
+```powershell
 node --version
 ```
 
 To get the absolute path to `mcpServer.js`, run:
 
-```sh
-realpath mcpServer.js
+```powershell
+(Resolve-Path .\mcpServer.js).Path
 ```
 
 Use the node command followed by the full path to `mcpServer.js` as the command for your new Postman MCP Request. Then click the **Connect** button. You should see a list of tools that you selected before generating the server. You can test that each tool works here before connecting the MCP server to an LLM.
@@ -88,8 +88,8 @@ You can connect your MCP server to any MCP client. Here we provide instructions 
 {
   "mcpServers": {
     "<server_name>": {
-      "command": "<absolute/path/to/node>",
-      "args": ["<absolute/path/to/mcpServer.js>"]
+      "command": "C:\\Program Files\\nodejs\\node.exe",
+      "args": ["E:\\02_Projects\\01_ML-SelfLearning\\MCP-For-Beginners\\postman-mcp\\postman-mcp-server\\mcpServer.js"]
     }
   }
 }
@@ -107,7 +107,7 @@ For production deployments, you can use Docker:
 
 **1. Build Docker image**
 
-```sh
+```powershell
 docker build -t <your_server_name> .
 ```
 
@@ -146,7 +146,7 @@ ENTRYPOINT ["node", "mcpServer.js"]
 
 To run the server with Server-Sent Events (SSE) support, use the `--sse` flag:
 
-```sh
+```powershell
 node mcpServer.js --sse
 ```
 
@@ -156,7 +156,7 @@ node mcpServer.js --sse
 
 List descriptions and parameters from all generated tools with:
 
-```sh
+```powershell
 node index.js tools
 ```
 

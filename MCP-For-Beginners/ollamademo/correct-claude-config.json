@@ -1,8 +1,0 @@
-{
-  "mcpServers": {
-    "ollama-prompts": {
-      "command": "node",
-      "args": ["/Users/jeremy/demos/mcpstuff/ollamademo/server.js"]
-    }
-  }
-}

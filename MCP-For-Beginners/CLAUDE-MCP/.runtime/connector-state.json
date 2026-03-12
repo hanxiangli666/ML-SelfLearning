@@ -1,0 +1,12 @@
+﻿{
+    "startedAt":  "2026-03-12T17:09:36.5419191-04:00",
+    "host":  "127.0.0.1",
+    "port":  3001,
+    "mcpPid":  35480,
+    "tunnelPid":  36828,
+    "mcpLog":  "E:\\02_Projects\\01_ML-SelfLearning\\MCP-For-Beginners\\CLAUDE-MCP\\.runtime\\mcp-20260312-170932.log",
+    "mcpErrLog":  "E:\\02_Projects\\01_ML-SelfLearning\\MCP-For-Beginners\\CLAUDE-MCP\\.runtime\\mcp-20260312-170932.err.log",
+    "tunnelLog":  "E:\\02_Projects\\01_ML-SelfLearning\\MCP-For-Beginners\\CLAUDE-MCP\\.runtime\\tunnel-20260312-170932.log",
+    "tunnelErrLog":  "E:\\02_Projects\\01_ML-SelfLearning\\MCP-For-Beginners\\CLAUDE-MCP\\.runtime\\tunnel-20260312-170932.err.log",
+    "publicUrl":  "https://f626d306c3a1b2.lhr.life"
+}

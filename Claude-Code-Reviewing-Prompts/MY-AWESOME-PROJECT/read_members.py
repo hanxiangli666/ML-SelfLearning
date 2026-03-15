@@ -1,6 +1,8 @@
 import csv
+from pathlib import Path
 
-with open("members.csv", newline="", encoding="utf-8") as f:
+csv_path = Path(__file__).parent / "members.csv"
+with open(csv_path, newline="", encoding="utf-8") as f:
     reader = csv.DictReader(f)
     print(f"{'First Name':<20} {'Last Name':<20}")
     print("-" * 40)
